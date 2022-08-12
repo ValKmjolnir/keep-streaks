@@ -16,10 +16,10 @@ var t=maketimestamp();
 t.stamp();
 
 while(1){
-    # sleep 60 sec
-    unix.sleep(60);
-    # trigger 60 min
-    if(t.elapsedMSec()>=1000*60*60){
+    # sleep 10 min
+    unix.sleep(60*10);
+    # trigger 1 day
+    if(t.elapsedMSec()>=1000*60*60*24){
         task();
         t.stamp();
     }else{
