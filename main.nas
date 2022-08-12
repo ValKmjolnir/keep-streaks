@@ -5,7 +5,7 @@ var task=func(){
     io.close(fd);
     system("git add .");
     system("git commit -m \""~os.time()~" auto update\"");
-    #system("git push");
+    system("git push");
     println("[",os.time(),"] git push successfully.");
 }
 
