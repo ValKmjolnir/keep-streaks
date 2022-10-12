@@ -8,7 +8,13 @@ var task=func(){
     println("[",os.time(),"] auto git commit.");
     system("git commit -m \""~os.time()~" auto update\"");
     println("[",os.time(),"] auto git push.");
-    system("git push");
+    var res=-1;
+    while(res!=0){
+        res=system("git push");
+        if(res!=0){
+            println("[",os.time(),"] push failed, retrying...");
+        }
+    }
     println("[",os.time(),"] git push successfully.");
 }
 

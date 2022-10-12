@@ -8,4 +8,4 @@ This program needs nasal runtime: [github.com/ValKmjolnir/Nasal-Interpreter](htt
 
 Run this program using this command:
 
-> ./nasal -op -e main.nas
+> ./nasal -o -e main.nas
