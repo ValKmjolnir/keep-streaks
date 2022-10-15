@@ -2,19 +2,19 @@
 # 2022 ValKmjolnir
 # using data from wows server: ASIA
 
-var rightpad=func(len,string){
+var rightpad=func(len,string,fill=" "){
     if(size(string)>=len)
         return string;
     while(size(string)<len)
-        string~=" ";
+        string~=fill;
     return string;
 }
 
-var leftpad=func(len,string){
+var leftpad=func(len,string,fill=" "){
     if(size(string)>=len)
         return string;
     while(size(string)<len)
-        string=" "~string;
+        string=fill~string;
     return string;
 }
 
@@ -53,23 +53,29 @@ var max_key_len=func(){
     return res;
 }();
 
-append(csv.property,"avg_dmg","rate");
+append(csv.property,"half_rate","avg_dmg","rate");
+var ht_print=func(){
+    var s="+-";
+    for(var i=0;i<size(csv.property)-1;i+=1)
+        s~=rightpad(max_key_len,"","-")~"-+-";
+    s~=rightpad(max_key_len,"","-")~"-+";
+    print(s,"\n");
+}
 func(){
+    ht_print();
     print("| ");
     foreach(var key;csv.property){
         print(rightpad(max_key_len,key)," | ");
     }
     print("\n");
+    ht_print();
 }();
 
 var data=csv.data;
 forindex(var i;data){
     var d=data[i];
     if(i==size(data)-1){
-        print("| ",rightpad(max_key_len,"avg:")," | ");
-        for(var j=0;j<size(csv.property)-1;j+=1)
-            print(rightpad(max_key_len,"")," | ");
-        print("\n");
+        ht_print();
     }
     print("| ");
     forindex(var j;d){
@@ -79,9 +85,13 @@ forindex(var i;data){
             print(rightpad(max_key_len,d[j])," | ");
         }
     }
+    var half_rate=d[1]/(d[0]+d[1]+d[2]+d[3]+d[4])*100;
     var avg_damage_per_valid_shell=d[5]/(d[0]+d[1]);
     var valid_rate=(d[0]+d[1])/(d[0]+d[1]+d[2]+d[3]+d[4])*100;
 
+    print(rightpad(max_key_len,str(int(half_rate))~"%")," | ");
     print(rightpad(max_key_len,str(int(avg_damage_per_valid_shell)))," | ");
     print(rightpad(max_key_len,str(int(valid_rate))~"%")," |\n");
 }
+ht_print();
+println(" data size: ",size(csv.data));
