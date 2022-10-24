@@ -174,10 +174,10 @@ print(rightpad(max_key_len,str(summary(col_data.citadel)))," | ");
 print(rightpad(max_key_len,str(int(summary(col_data.damage)/1000))~"k")," | ");
 func(){
     var victory=0;
-    foreach(var i;col_data.result){
+    foreach(var i;col_data.win){
         victory+=i;
     }
-    print(rightpad(max_key_len,str(int(victory/size(col_data.result)*100)~"%"))," | ");
+    print(rightpad(max_key_len,str(int(victory/size(col_data.win)*100)~"%"))," | ");
 }();
 print(rightpad(max_key_len,"N/A")," | ");
 print(rightpad(max_key_len,"N/A")," | ");
@@ -195,10 +195,10 @@ print(rightpad(max_key_len,str(avg(col_data.citadel)))," | ");
 print(rightpad(max_key_len,str(avg(col_data.damage)))," | ");
 func(){
     var victory=0;
-    foreach(var i;col_data.result){
+    foreach(var i;col_data.win){
         victory+=i;
     }
-    print(rightpad(max_key_len,str(int(victory/size(col_data.result)*100))~"%")," | ");
+    print(rightpad(max_key_len,str(int(victory/size(col_data.win)*100))~"%")," | ");
 }();
 func(){
     var res=col_data;
@@ -257,4 +257,5 @@ divider_print(size(col_data)+1);
 keys_print(end:rightpad(max_key_len,"type")~" |\n");
 divider_print(size(col_data)+1);
 
+println("Data size: ",size(col_data.win));
 println("LET WG KNOW THE FRENCH BATTLESHIP REPUBQLIQUE IS TOTALLY A BULL SHIT!");
