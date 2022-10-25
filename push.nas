@@ -12,6 +12,7 @@ var task=func(){
     while(res!=0){
         res=system("git push");
         if(res!=0){
+            unix.sleep(5);
             println("[",os.time(),"] push failed, retrying...");
         }
     }
