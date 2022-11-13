@@ -82,7 +82,7 @@ var read_csv=func(path){
     };
 }
 
-var csv=read_csv("./data/wows_republique_ap.csv");
+var csv=read_csv("./wows-data/wows_republique_ap.csv");
 
 var generate_column_data_frame=func(csv_struct){
     var line_size=size(csv_struct.property);
