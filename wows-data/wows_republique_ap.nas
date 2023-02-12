@@ -175,7 +175,7 @@ print(rightpad(max_key_len,str(summary(col_data.no_pen)))," | ");
 print(rightpad(max_key_len,str(summary(col_data.hit_torp)))," | ");
 print(rightpad(max_key_len,str(summary(col_data.ricochet)))," | ");
 print(rightpad(max_key_len,str(summary(col_data.citadel)))," | ");
-print(rightpad(max_key_len,str(int(summary(col_data.damage)/1000))~"k")," | ");
+print(rightpad(max_key_len,reserve_one(summary(col_data.damage)/1000000)~"m")," | ");
 func(){
     var victory=0;
     foreach(var i;col_data.win){
@@ -268,4 +268,3 @@ keys_print(end:rightpad(max_key_len,"type")~" |\n");
 divider_print(size(col_data)+1);
 
 println("Data size: ",size(col_data.win));
-println("LET WG KNOW THE FRENCH BATTLESHIP REPUBQLIQUE IS TOTALLY A BULL SHIT!");
