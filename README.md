@@ -22,10 +22,6 @@ Stores two scripts to keep streaks
 
 A new project for experiment
 
-### __STL__
-
-Nasal runtime standard library
-
 ### __WOWS-Data__
 
 Stores data of famous ship Republiqué and a script for statistics.
