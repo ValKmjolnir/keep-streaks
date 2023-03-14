@@ -268,3 +268,6 @@ keys_print(end:rightpad(max_key_len,"type")~" |\n");
 divider_print(size(col_data)+1);
 
 println("Data size: ",size(col_data.win));
+println("Okay, this ship is totally a piece of shit.");
+println("Never played such a motherfucker ship.");
+println("All the guns are like retard.");
