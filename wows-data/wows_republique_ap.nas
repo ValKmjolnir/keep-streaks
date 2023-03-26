@@ -106,7 +106,7 @@ var generate_column_data_frame=func(csv_struct){
         var half_rate=res.half_dmg[i]/(res.over_pen[i]+res.half_dmg[i]+res.no_pen[i]+res.hit_torp[i]+res.ricochet[i])*100;
         var avg_damage_per_valid_shell=res.damage[i]/(res.over_pen[i]+res.half_dmg[i]);
         var avg_damage_per_all_shell=res.damage[i]/(res.over_pen[i]+res.half_dmg[i]+res.no_pen[i]+res.hit_torp[i]+res.ricochet[i]);
-        res.half_rate[i]=int(half_rate);
+        res.half_rate[i]=half_rate;
         res.avg_dmg[i]=int(avg_damage_per_valid_shell);
         res.avg_all[i]=int(avg_damage_per_all_shell);
     }
@@ -152,7 +152,7 @@ var main_data_print=func(){
         var line=[];
         foreach(var key;csv.property){
             if(key=="half_rate")
-                append(line,col_data[key][i]~"%");
+                append(line,reserve_one(col_data[key][i])~"%");
             else
                 append(line,col_data[key][i]);
         }
@@ -181,7 +181,7 @@ func(){
     foreach(var i;col_data.win){
         victory+=i;
     }
-    print(rightpad(max_key_len,str(int(victory/size(col_data.win)*100)~"%"))," | ");
+    print(rightpad(max_key_len,str(reserve_one(victory/size(col_data.win)*100)~"%"))," | ");
 }();
 print(rightpad(max_key_len,"N/A")," | ");
 print(rightpad(max_key_len,"N/A")," | ");
@@ -203,14 +203,14 @@ func(){
     foreach(var i;col_data.win){
         victory+=i;
     }
-    print(rightpad(max_key_len,str(int(victory/size(col_data.win)*100))~"%")," | ");
+    print(rightpad(max_key_len,str(reserve_one(victory/size(col_data.win)*100))~"%")," | ");
 }();
 func(){
     var res=col_data;
     var avg_half_rate=summary(res.half_dmg)/(summary(res.over_pen)+summary(res.half_dmg)+summary(res.no_pen)+summary(res.hit_torp)+summary(res.ricochet))*100;
     var avg_avg_damage_per_valid_shell=summary(res.damage)/(summary(res.over_pen)+summary(res.half_dmg));
     var avg_avg_damage_per_all_shell=summary(res.damage)/(summary(res.over_pen)+summary(res.half_dmg)+summary(res.no_pen)+summary(res.hit_torp)+summary(res.ricochet));
-    print(rightpad(max_key_len,str(int(avg_half_rate))~"%")," | ");
+    print(rightpad(max_key_len,str(reserve_one(avg_half_rate))~"%")," | ");
     print(rightpad(max_key_len,str(int(avg_avg_damage_per_valid_shell)))," | ");
     print(rightpad(max_key_len,str(int(avg_avg_damage_per_all_shell)))," | ");
 }();
@@ -227,7 +227,7 @@ print(rightpad(max_key_len,str(find_min(col_data.ricochet)))," | ");
 print(rightpad(max_key_len,str(find_min(col_data.citadel)))," | ");
 print(rightpad(max_key_len,str(find_min(col_data.damage)))," | ");
 print(rightpad(max_key_len,"N/A")," | ");
-print(rightpad(max_key_len,str(find_min(col_data.half_rate))~"%")," | ");
+print(rightpad(max_key_len,str(reserve_one(find_min(col_data.half_rate)))~"%")," | ");
 print(rightpad(max_key_len,str(find_min(col_data.avg_dmg)))," | ");
 print(rightpad(max_key_len,str(find_min(col_data.avg_all)))," | ");
 print(rightpad(max_key_len,"min")," |\n");
@@ -243,7 +243,7 @@ print(rightpad(max_key_len,str(find_max(col_data.ricochet)))," | ");
 print(rightpad(max_key_len,str(find_max(col_data.citadel)))," | ");
 print(rightpad(max_key_len,str(find_max(col_data.damage)))," | ");
 print(rightpad(max_key_len,"N/A")," | ");
-print(rightpad(max_key_len,str(find_max(col_data.half_rate))~"%")," | ");
+print(rightpad(max_key_len,str(reserve_one(find_max(col_data.half_rate)))~"%")," | ");
 print(rightpad(max_key_len,str(find_max(col_data.avg_dmg)))," | ");
 print(rightpad(max_key_len,str(find_max(col_data.avg_all)))," | ");
 print(rightpad(max_key_len,"max")," |\n");
