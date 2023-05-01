@@ -71,7 +71,7 @@ var reserve_one=func(number){
 }
 
 var read_csv=func(path){
-    var context=io.fin(path);
+    var context=io.readfile(path);
     context=split("\n",context);
     forindex(var i;context){
         context[i]=split(",",context[i]);
