@@ -1,3 +1,7 @@
+use std.os;
+use std.io;
+use std.unix;
+
 var task=func(){
     println("[",os.time(),"] add new line.");
     var fd=io.open(".task","a");
