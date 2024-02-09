@@ -17,15 +17,3 @@ Run this program using this command, this will push immediately and exit:
 ### __Auto-Push__
 
 Stores two scripts to keep streaks
-
-### __Lakato__
-
-A new project for experiment
-
-### __WOWS-Data__
-
-Stores data of famous ship Republiqué and a script for statistics.
-
-Run the script with this command:
-
-> ./nasal ./wows-data/wows_republique_ap.nas
